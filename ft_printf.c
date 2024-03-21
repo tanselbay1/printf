@@ -6,13 +6,11 @@
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:29:08 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/21 12:22:15 by tbayrakt         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:38:24 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {
@@ -25,7 +23,7 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	while (format[i])
 	{
-		outputLength += write(1, &format[i], 1);
+		outputLength += ft_print_char(format[i]);
 		i++;
 	}
 	va_end(args); // It will free the allocated memory
@@ -36,6 +34,8 @@ int	ft_printf(const char *format, ...)
 int	main(void)
 {
 	char world[] = "Hello World!";
-	int returnPrintf = ft_printf(world);
+	int returnPrintf;
+
+	returnPrintf = ft_printf(world);
 	printf("Return value: %d\n", returnPrintf);
 }

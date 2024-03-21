@@ -1,28 +1,33 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
-NAME = libft.a
+NAME = libftprint.a
 AR = ar rcs
 LIB = ranlib
+INC_DIR = .
 
-SRCS = ft_printf.o
+SRC = ft_printf.c
+SRC_LIB = $(addprefix libprintf/, ft_print_char.c)
 
-OBJS = ${SRCS:.c=.o}
+OBJS = ${SRC:.c=.o}
+OBJS_LIB = ${SRC_LIB:.c=.o}
 
 ######### Targets ########
 all: ${NAME}
 
-${NAME}: ${OBJS}
-	${AR} ${NAME} ${OBJS}
+${NAME}: ${OBJS} ${OBJS_LIB}
+	${AR} ${NAME} ${OBJS} ${OBJS_LIB}
 	${LIB} ${NAME}
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+# .c.o:
+# 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+%.o: %.c
+	$(CC) -I$(INC_DIR) $(CCFLAGS) -o $@ -c $?
 
 ######### Clean ########
 # Clean obj files (.o)
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} ${OBJS_LIB}
 
 # Clean obj and library (.o .a)
 fclean: clean
@@ -31,7 +36,8 @@ fclean: clean
 # Re-Make the library
 re: fclean all
 
-# Dependency of header file for all obj
-${OBJS}: libft.h
-
 .PHONY: all clean fclean re
+
+# make -> .a 
+
+# cc ft_printf.c -L .a
