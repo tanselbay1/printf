@@ -6,11 +6,13 @@
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:23:48 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/21 13:24:24 by tbayrakt         ###   ########.fr       */
+/*   Updated: 2024/03/24 15:59:02 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+// #include "ft_printf.h"
+
+#include <unistd.h>
 
 int	ft_print_char(char c)
 {
