@@ -6,7 +6,7 @@
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:29:08 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/25 12:33:24 by tbayrakt         ###   ########.fr       */
+/*   Updated: 2024/03/25 13:04:41 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_formatter(const char *format, va_list args, int i)
 		count += ft_print_char('%');
 	else if (format[i] == 'c')
 		count += ft_print_char(va_arg(args, int));
+	else if (format[i] == 's')
+		count += ft_print_str(va_arg(args, char *));
 	return (count);
 }
 
@@ -52,6 +54,6 @@ int	main(void)
 {
 	int returnPrintf;
 
-	returnPrintf = ft_printf("Main string:%c", 'c');
+	returnPrintf = ft_printf("Main string: %s", "string");
 	printf("\nReturn value: %d\n", returnPrintf);
 }

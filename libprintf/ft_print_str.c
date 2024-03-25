@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 13:05:29 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/25 13:02:39 by tbayrakt         ###   ########.fr       */
+/*   Created: 2024/03/25 12:48:13 by tbayrakt          #+#    #+#             */
+/*   Updated: 2024/03/25 12:58:52 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+// #include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include <unistd.h>
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
+int	ft_print_str(char *str)
+{
+	int count;
 
-#endif
+	count = 0;
+	if (!str)
+		count += ft_print_str("(null)");
+	else
+	{
+		while (*str)
+			count += write(1, str++, 1);
+	}
+	return (count);
+}
