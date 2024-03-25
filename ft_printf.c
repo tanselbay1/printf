@@ -6,11 +6,23 @@
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:29:08 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/24 16:01:03 by tbayrakt         ###   ########.fr       */
+/*   Updated: 2024/03/25 12:33:24 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_formatter(const char *format, va_list args, int i)
+{
+	int	count;
+
+	count = 0;
+	if (format[i] == '%')
+		count += ft_print_char('%');
+	else if (format[i] == 'c')
+		count += ft_print_char(va_arg(args, int));
+	return (count);
+}
 
 int	ft_printf(const char *format, ...)
 {
@@ -23,7 +35,12 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	while (format[i])
 	{
-		outputLength += ft_print_char(format[i]);
+		if (format[i] == '%')
+			outputLength += ft_formatter(format, args, ++i);
+		else
+		{
+			outputLength += write(1, &format[i], 1);
+		}
 		i++;
 	}
 	va_end(args); // It will free the allocated memory
@@ -33,9 +50,8 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	char world[] = "Hello World!";
 	int returnPrintf;
 
-	returnPrintf = ft_printf(world);
-	printf("Return value: %d\n", returnPrintf);
+	returnPrintf = ft_printf("Main string:%c", 'c');
+	printf("\nReturn value: %d\n", returnPrintf);
 }
