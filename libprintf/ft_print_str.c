@@ -6,12 +6,11 @@
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:48:13 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/25 12:58:52 by tbayrakt         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:57:13 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "ft_printf.h"
-
 #include <unistd.h>
 
 int	ft_print_str(char *str)

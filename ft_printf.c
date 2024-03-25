@@ -6,7 +6,7 @@
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:29:08 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/25 13:04:41 by tbayrakt         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:21:41 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ int	ft_formatter(const char *format, va_list args, int i)
 		count += ft_print_char(va_arg(args, int));
 	else if (format[i] == 's')
 		count += ft_print_str(va_arg(args, char *));
+	else if (format[i] == 'p')
+		count += ft_print_ptr(va_arg(args, void *));
+	else if (format[i] == 'x')
+		count += ft_print_hex(va_arg(args, unsigned int), 0);
+	else if (format[i] == 'X')
+		count += ft_print_hex(va_arg(args, unsigned int), 1);
 	return (count);
 }
 
@@ -53,7 +59,20 @@ int	ft_printf(const char *format, ...)
 int	main(void)
 {
 	int returnPrintf;
+	int returnPrintf1;
+	int *ptr;
+	int nbr = 10;
 
-	returnPrintf = ft_printf("Main string: %s", "string");
+	ptr = &nbr;
+	// returnPrintf = ft_printf("Main string: %s", "string");
+
+	// Hexadecimal Test
+	// returnPrintf = ft_printf("255 in hexadecimal = %x\n", 255);
+	returnPrintf = ft_printf("255 in hexadecimal = %X\n", 255);
+
+	// Pointer Test
+	// returnPrintf = printf("Pointer Address: %p\n", (void *)ptr);
+	// returnPrintf1 = ft_printf("Pointer Address1: %p", (void *)ptr);
 	printf("\nReturn value: %d\n", returnPrintf);
+	// printf("\nReturn value: %d\n", returnPrintf1);
 }
