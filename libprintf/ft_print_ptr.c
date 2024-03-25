@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 13:05:29 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/25 14:46:35 by tbayrakt         ###   ########.fr       */
+/*   Created: 2024/03/25 13:20:31 by tbayrakt          #+#    #+#             */
+/*   Updated: 2024/03/25 14:45:18 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+// #include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include <unistd.h>
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
-int	ft_print_ptr(void *ptr);
+int	ft_print_ptr(void *ptr)
+{
+	int count;
 
-#endif
+	count = 0;
+	if (ptr == 0)
+		return (write(1, "(nil)", 5));
+	count += write(1, "0x", 2);
+	count += ft_print_hex((unsigned long long)ptr, 0);
+}
