@@ -6,7 +6,7 @@
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:29:08 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/27 11:51:01 by tbayrakt         ###   ########.fr       */
+/*   Updated: 2024/03/27 12:14:39 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_formatter(const char *format, va_list args, int i)
 		count += ft_print_hex(va_arg(args, unsigned int), 1);
 	else if (format[i] == 'i' || format[i] == 'd')
 		count += ft_print_int(va_arg(args, int));
+	else if (format[i] == 'u')
+		count += ft_print_uint(va_arg(args, unsigned int));
 	return (count);
 }
 
@@ -62,10 +64,8 @@ int	main(void)
 {
 	int returnPrintf;
 	int returnPrintf1;
-	int *ptr;
 	int nbr = 10;
 
-	ptr = &nbr;
 	// returnPrintf = ft_printf("Main string: %s", "string");
 
 	// Hexadecimal Test
@@ -73,12 +73,18 @@ int	main(void)
 	// returnPrintf = ft_printf("255 in hexadecimal = %X\n", 255);
 
 	// Pointer Test
+	// int *ptr;
+	// ptr = &nbr;
 	// returnPrintf = printf("Pointer Address: %p\n", (void *)ptr);
 	// returnPrintf1 = ft_printf("Pointer Address1: %p", (void *)ptr);
 	printf("\nReturn value: %d\n", returnPrintf);
 	// printf("\nReturn value: %d\n", returnPrintf1);
 
 	// Integer Test
-	returnPrintf = ft_printf("My number: %i\n", -10);
-	printf("My number with built-in: %i\n", -1);
+	// returnPrintf = ft_printf("My number: %i\n", -10);
+	// printf("My number with built-in: %i\n", -1);
+
+	// Unsigned Integer Test
+	returnPrintf = ft_printf("My number: %u\n", 0xFFFFFFFF);
+	printf("My number with built-in: %u\n", 0xFFFFFFFF);
 }
