@@ -7,7 +7,7 @@ LIB = ranlib
 INC_DIR = .
 
 SRC = ft_printf.c
-SRC_LIB = $(addprefix libprintf/, ft_print_char.c, ft_print_str.c, ft_print_ptr.c, ft_print_hex.c)
+SRC_LIB = $(addprefix libprintf/, ft_print_char.c, ft_print_str.c, ft_print_ptr.c, ft_print_hex.c, ft_print_int)
 
 OBJS = ${SRC:.c=.o}
 OBJS_LIB := ${SRC_LIB:.c=.o}

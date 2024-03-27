@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 13:05:29 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/27 11:39:01 by tbayrakt         ###   ########.fr       */
+/*   Created: 2024/03/27 11:22:12 by tbayrakt          #+#    #+#             */
+/*   Updated: 2024/03/27 11:48:55 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+// #include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+int	ft_print_int(int n)
+{
+	int	i;
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *str);
-int	ft_print_ptr(void *ptr);
-int	ft_print_hex(unsigned long long n, int upper);
-int	ft_print_int(int n);
-
-#endif
+	i = 0;
+	if (n == -2147483648)
+		i += ft_print_str("-2147483648");
+	else if (n < 0)
+	{
+		i += ft_print_char('-');
+		i += ft_print_int(-n);
+	}
+	else if (n > 9)
+	{
+		i += ft_print_int(n / 10);
+		i += ft_print_char(n % 10 + '0');
+	}
+	else
+		i += ft_print_char(n + '0');
+	return (i);
+}
