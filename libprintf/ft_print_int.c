@@ -6,11 +6,11 @@
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:22:12 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/27 11:48:55 by tbayrakt         ###   ########.fr       */
+/*   Updated: 2024/03/27 12:27:08 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_print_int(int n)
 {

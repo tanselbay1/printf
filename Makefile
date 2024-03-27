@@ -1,16 +1,16 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CCFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
-NAME = libftprint.a
+NAME = libftprintf.a
 AR = ar rcs
 LIB = ranlib
 INC_DIR = .
 
 SRC = ft_printf.c
-SRC_LIB = $(addprefix libprintf/, ft_print_char.c, ft_print_str.c, ft_print_ptr.c, ft_print_hex.c, ft_print_int.c, ft_print_uint.c)
+SRC_LIB = $(addprefix libprintf/, ft_print_char.c ft_print_str.c ft_print_ptr.c ft_print_hex.c ft_print_int.c ft_print_uint.c)
 
 OBJS = ${SRC:.c=.o}
-OBJS_LIB := ${SRC_LIB:.c=.o}
+OBJS_LIB = ${SRC_LIB:.c=.o}
 
 ######### Targets ########
 all: ${NAME}
@@ -22,7 +22,7 @@ ${NAME}: ${OBJS} ${OBJS_LIB}
 # .c.o:
 # 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 %.o: %.c
-	$(CC) -I$(INC_DIR) $(CCFLAGS) -o $@ -c $?
+	$(CC) -I$(INC_DIR) $(CCFLAGS) -o $@ -c $<
 
 ######### Clean ########
 # Clean obj files (.o)
@@ -37,7 +37,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-# make -> .a 
-
-# cc ft_printf.c -L .a

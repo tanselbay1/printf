@@ -6,19 +6,22 @@
 /*   By: tbayrakt <tbayrakt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:29:55 by tbayrakt          #+#    #+#             */
-/*   Updated: 2024/03/25 16:06:57 by tbayrakt         ###   ########.fr       */
+/*   Updated: 2024/03/27 13:31:04 by tbayrakt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "ft_printf.h"
-#include <unistd.h>
+#include "ft_printf.h"
+
+// #include <unistd.h>
 
 int	ft_print_hex(unsigned long long n, int upper)
 {
-	int count;
+	int	count;
 
 	count = 0;
-	if (n >= 16)
+	if (n == 0)
+		count += ft_print_char('0');
+	else if (n >= 16)
 	{
 		count += ft_print_hex(n / 16, upper);
 		count += ft_print_hex(n % 16, upper);
@@ -27,8 +30,7 @@ int	ft_print_hex(unsigned long long n, int upper)
 	{
 		if (n < 10)
 		{
-			count += write(1, &n, 1);
-			write(1, "0", 1);
+			count += ft_print_char(n + '0');
 		}
 		else
 		{
